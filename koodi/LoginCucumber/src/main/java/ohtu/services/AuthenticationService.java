@@ -41,6 +41,16 @@ public class AuthenticationService {
     private boolean invalid(String username, String password) {
         // validity check of username and password
 
+        // pos pattern - accepts usernames with a-z with length of at least 3
+        String usernamePattern = "[a-z]{3,}";
+        // neg pattern - rejects passwords without at least one number or special character
+        String passwordPattern = "[a-zA-Z]+";
+
+        if (!username.matches(usernamePattern) ||
+                password.length() < 8 ||
+                password.matches(passwordPattern)) {
+            return true;
+        }
         return false;
     }
 }
