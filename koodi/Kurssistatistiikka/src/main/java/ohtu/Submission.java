@@ -8,6 +8,7 @@ public class Submission {
     private int hours;
     private List<Integer> exercises;
     private String course;
+    private int maxExercises;
 
     public int getWeek() {
         return this.week;
@@ -41,16 +42,20 @@ public class Submission {
         this.course = course;
     }
 
+    public void setMaxExercises(int maxExercises) {
+        this.maxExercises = maxExercises;
+    }
+
     @Override
     public String toString() {
         String exerciseList = this.exercises.toString();
         exerciseList = exerciseList.substring(1, exerciseList.length() - 1);
 
         return String.format(
-            "%1$s, viikko %2$s, tehtyjä tehtäviä yhteensä %3$s, aikaa kului %4$s, tehdyt tehtävät: %5$s",
-            this.course,
+            "viikko %1$s:\n  tehtyjä tehtäviä %2$s/%3$s, aikaa kului %4$s, tehdyt tehtävät: %5$s",
             this.week,
             this.exercises.size(),
+            this.maxExercises,
             this.hours,
             exerciseList
         );
